@@ -13,7 +13,7 @@ import (
 	"github.com/hhxsv5/gin-slim-router/router"
 )
 type User struct {
-    // Format: {HttpMethod}Action func(*gin.Context) `path:"/xxxpath"`
+	// Format: {HttpMethod}Action func(*gin.Context) `path:"/xxxpath"`
 	PostCreate func(*gin.Context) `path:"/create"`
 	GetList    func(*gin.Context) `path:"/list"`
 }
@@ -22,10 +22,10 @@ func (u User) NewController() router.Controller {
 	u.GetList = getList
 	return u
 }
-func create(ctx *gin.Context) { // POST http://127.0.0.1:5200/user/create
+func create(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, "create user")
 }
-func getList(ctx *gin.Context) { // GET http://127.0.0.1:5200/user/list
+func getList(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, "get user list")
 }
 ```
