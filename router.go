@@ -4,12 +4,12 @@ import (
 	"reflect"
 	"strings"
 	"github.com/gin-gonic/gin"
+	"fmt"
 )
 
 const (
 	PathTag = "path"
 
-	MethodAny     = "ANY"
 	MethodGet     = "GET"
 	MethodPost    = "POST"
 	MethodPut     = "PUT"
@@ -17,12 +17,12 @@ const (
 	MethodHead    = "HEAD"
 	MethodPatch   = "PATCH"
 	MethodOptions = "OPTIONS"
+	MethodAny     = "ANY"
 )
 
 var (
 	actionType     = reflect.TypeOf(func(*gin.Context) {})
 	supportMethods = map[string]func(gin.IRouter, string, func(*gin.Context)){
-		MethodAny:     func(rg gin.IRouter, path string, handler func(*gin.Context)) { rg.Any(path, handler) },
 		MethodGet:     func(rg gin.IRouter, path string, handler func(*gin.Context)) { rg.GET(path, handler) },
 		MethodPost:    func(rg gin.IRouter, path string, handler func(*gin.Context)) { rg.POST(path, handler) },
 		MethodPut:     func(rg gin.IRouter, path string, handler func(*gin.Context)) { rg.PUT(path, handler) },
@@ -30,6 +30,7 @@ var (
 		MethodHead:    func(rg gin.IRouter, path string, handler func(*gin.Context)) { rg.HEAD(path, handler) },
 		MethodPatch:   func(rg gin.IRouter, path string, handler func(*gin.Context)) { rg.PATCH(path, handler) },
 		MethodOptions: func(rg gin.IRouter, path string, handler func(*gin.Context)) { rg.OPTIONS(path, handler) },
+		MethodAny:     func(rg gin.IRouter, path string, handler func(*gin.Context)) { rg.Any(path, handler) },
 	}
 	parseAction = func(rg gin.IRouter, field reflect.StructField, value reflect.Value) bool {
 		if field.Type != actionType {
@@ -45,10 +46,14 @@ var (
 	}
 	guessMethod = func(rg gin.IRouter, name string, path string, handler func(*gin.Context)) bool {
 		for method, call := range supportMethods {
-			m := strings.ToUpper(name[:len(method)])
-			if _, ok := supportMethods[m]; ok {
-				call(rg, path, handler)
-				return true
+			ml := len(method)
+			if ml <= len(name) {
+				m := strings.ToUpper(name[:ml])
+				if _, ok := supportMethods[m]; ok && method == m {
+					fmt.Println(method, ml, name, m)
+					call(rg, path, handler)
+					return true
+				}
 			}
 		}
 		return false
