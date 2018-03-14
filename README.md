@@ -21,6 +21,7 @@ type User struct {
 	GetList    func(*gin.Context) `path:"/list"`
 }
 
+// Implement interface Controller
 func (u User) NewController() gsr.Controller {
 	u.PostCreate = create
 	u.GetList = getList
