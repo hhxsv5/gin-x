@@ -7,6 +7,7 @@ import (
 )
 
 type Test struct {
+	// HttpMethod: Any/GET/POST/DELETE/PATCH/PUT/OPTIONS/HEAD
 	// Format: {HttpMethod}Action func(*gin.Context) `path:"/xxxpath"`
 	PostXxx func(*gin.Context) `path:"/xxx"`
 	GetYyy  func(*gin.Context) `path:"/yyy"`

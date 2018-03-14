@@ -9,15 +9,27 @@ import (
 const (
 	PathTag = "path"
 
-	MethodGet  = "GET"
-	MethodPost = "POST"
+	MethodAny     = "ANY"
+	MethodGet     = "GET"
+	MethodPost    = "POST"
+	MethodPut     = "PUT"
+	MethodDelete  = "DELETE"
+	MethodHead    = "HEAD"
+	MethodPatch   = "PATCH"
+	MethodOptions = "OPTIONS"
 )
 
 var (
 	actionType     = reflect.TypeOf(func(*gin.Context) {})
 	supportMethods = map[string]func(gin.IRouter, string, func(*gin.Context)){
-		MethodGet:  func(rg gin.IRouter, path string, handler func(*gin.Context)) { rg.GET(path, handler) },
-		MethodPost: func(rg gin.IRouter, path string, handler func(*gin.Context)) { rg.POST(path, handler) },
+		MethodAny:     func(rg gin.IRouter, path string, handler func(*gin.Context)) { rg.Any(path, handler) },
+		MethodGet:     func(rg gin.IRouter, path string, handler func(*gin.Context)) { rg.GET(path, handler) },
+		MethodPost:    func(rg gin.IRouter, path string, handler func(*gin.Context)) { rg.POST(path, handler) },
+		MethodPut:     func(rg gin.IRouter, path string, handler func(*gin.Context)) { rg.PUT(path, handler) },
+		MethodDelete:  func(rg gin.IRouter, path string, handler func(*gin.Context)) { rg.DELETE(path, handler) },
+		MethodHead:    func(rg gin.IRouter, path string, handler func(*gin.Context)) { rg.HEAD(path, handler) },
+		MethodPatch:   func(rg gin.IRouter, path string, handler func(*gin.Context)) { rg.PATCH(path, handler) },
+		MethodOptions: func(rg gin.IRouter, path string, handler func(*gin.Context)) { rg.OPTIONS(path, handler) },
 	}
 	parseAction = func(rg gin.IRouter, field reflect.StructField, value reflect.Value) bool {
 		if field.Type != actionType {
