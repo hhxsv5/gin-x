@@ -2,13 +2,13 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/hhxsv5/gin-slim-router/router"
 	"github.com/hhxsv5/gin-slim-router/examples/controllers"
+	"github.com/hhxsv5/gin-slim-router"
 )
 
 func main() {
 	engine := gin.New()
-	router := router.NewSlimRouter(engine)
+	router := gsr.NewSlimRouter(engine)
 	//router.Use(middlewares.Global()) // Global middleware
 
 	// Register route: POST http://127.0.0.1:5200/xxx
