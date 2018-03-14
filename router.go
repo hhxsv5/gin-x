@@ -48,7 +48,10 @@ var (
 			ml := len(method)
 			if ml <= len(name) {
 				m := strings.ToUpper(name[:ml])
-				if _, ok := supportMethods[m]; ok && method == m {
+				if method != m {
+					continue
+				}
+				if _, ok := supportMethods[m]; ok {
 					call(rg, path, handler)
 					return true
 				}
