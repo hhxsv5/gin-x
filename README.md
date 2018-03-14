@@ -15,7 +15,8 @@ import (
 )
 
 type User struct {
-	// Format: {HttpMethod}Action func(*gin.Context) `path:"/xxxpath"`
+	// HttpMethod: Any/GET/POST/DELETE/PATCH/PUT/OPTIONS/HEAD
+    // Format: {HttpMethod}Action func(*gin.Context) `path:"/xxxpath"`
 	PostCreate func(*gin.Context) `path:"/create"`
 	GetList    func(*gin.Context) `path:"/list"`
 }
