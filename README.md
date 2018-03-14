@@ -53,3 +53,7 @@ func main() {
 	engine.Run(":5200")
 }
 ```
+
+## License
+
+[MIT](https://github.com/hhxsv5/gin-slim-router/blob/master/LICENSE)
