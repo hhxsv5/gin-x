@@ -3,7 +3,7 @@ package controllers
 import (
 	"net/http"
 	"github.com/gin-gonic/gin"
-	"github.com/hhxsv5/gin-slim-router/router"
+	"github.com/hhxsv5/gin-slim-router"
 )
 
 type Test struct {
@@ -12,7 +12,7 @@ type Test struct {
 	GetYyy  func(*gin.Context) `path:"/yyy"`
 }
 
-func (t Test) NewController() router.Controller {
+func (t Test) NewController() gsr.Controller {
 	t.PostXxx = xxx
 	t.GetYyy = yyy
 	return t
