@@ -4,7 +4,6 @@ import (
 	"reflect"
 	"strings"
 	"github.com/gin-gonic/gin"
-	"fmt"
 )
 
 const (
@@ -50,7 +49,6 @@ var (
 			if ml <= len(name) {
 				m := strings.ToUpper(name[:ml])
 				if _, ok := supportMethods[m]; ok && method == m {
-					fmt.Println(method, ml, name, m)
 					call(rg, path, handler)
 					return true
 				}
