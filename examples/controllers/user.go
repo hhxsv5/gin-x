@@ -3,7 +3,7 @@ package controllers
 import (
 	"net/http"
 	"github.com/gin-gonic/gin"
-	"github.com/hhxsv5/gin-slim-router"
+	"github.com/hhxsv5/gin-x/router"
 )
 
 type User struct {
@@ -13,7 +13,7 @@ type User struct {
 	GetList    func(*gin.Context) `path:"/list"`
 }
 
-func (u User) NewController() gsr.Controller {
+func (u User) NewController() router.Controller {
 	u.PostCreate = create
 	u.GetList = getList
 	return u
