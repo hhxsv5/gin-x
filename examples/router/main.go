@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/hhxsv5/gin-x/router"
-	"github.com/hhxsv5/gin-x/examples/controllers"
+	"github.com/hhxsv5/gin-x/examples/router/controllers"
 )
 
 func main() {
