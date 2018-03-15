@@ -1,5 +1,5 @@
 # Gin-X
-> More components to improve development efficiency for Gin framework.
+More components to improve development efficiency for Gin framework.
 
 ## Features
 
