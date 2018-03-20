@@ -5,6 +5,8 @@ More components to improve development efficiency for Gin framework.
 
 - Slim router
 
+- Smart cron
+
 - TODO...
 
 ## Document
