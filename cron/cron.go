@@ -24,6 +24,10 @@ func (m *Manager) Register(job ... Job) {
 	}
 }
 
+func (m *Manager) RegisterFunc(frequency string, cmd func()) {
+	m.cron.AddFunc(frequency, cmd)
+}
+
 func (m *Manager) Start() {
 	m.cron.Start()
 }
