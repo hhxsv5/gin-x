@@ -9,7 +9,7 @@ type Test struct {
 }
 
 func (Test) Frequency() string {
-	return "30 * * * * *" //每30秒
+	return "30 * * * * *" //every 30s
 }
 
 func (Test) Run() {
