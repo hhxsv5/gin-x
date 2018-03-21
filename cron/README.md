@@ -26,6 +26,7 @@ func (Test) Run() {
 ```
 
 2. Create Job Manager & Register Job
+```Go
 package crons
 
 import (
