@@ -5,9 +5,9 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-const (
-	MaxLimit     = 100
-	DefaultLimit = 10
+var (
+	MaxLimit     = uint(100)
+	DefaultLimit = uint(10)
 )
 
 func ParsePager(ctx *gin.Context) (start, limit uint) {
