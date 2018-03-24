@@ -7,6 +7,8 @@ More components to improve development efficiency for Gin framework.
 
 - Smart cron
 
+- Utility helper
+
 - TODO...
 
 ## Document
