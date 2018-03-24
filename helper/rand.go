@@ -6,15 +6,15 @@ import (
 )
 
 var (
-	Chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+	RandChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 )
 
 func RandStr(l int) string {
-	le := len(Chars)
+	le := len(RandChars)
 	data := make([]byte, l, l)
 	rand.Seed(time.Now().UnixNano())
 	for i := 0; i < l; i++ {
-		data[i] = byte(Chars[rand.Intn(le)])
+		data[i] = byte(RandChars[rand.Intn(le)])
 	}
 	return string(data)
 }
