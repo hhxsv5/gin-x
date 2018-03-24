@@ -37,9 +37,11 @@ id := helper.FileIsDir("./main.go")
 log.Println(id)
 
 // Pager usage
+//ctx: *gin.Context
 //start, limit := helper.ParsePager(ctx)
-//list := make([]string, 0)
-//pager := helper.BuildPager(0, list)
+//list := make([]string, 10)
+//total := 10
+//pager := helper.BuildPager(list, total)
 //ctx.JSON(http.StatusOK, pager)
 ```
 
