@@ -6,20 +6,20 @@ import (
 )
 
 var (
-	MaxLimit     = uint(100)
-	DefaultLimit = uint(10)
+	MaxLimit     = uint64(100)
+	DefaultLimit = uint64(10)
 )
 
-func ParsePager(ctx *gin.Context) (start, limit uint) {
+func ParsePager(ctx *gin.Context) (start, limit uint64) {
 	is, err := strconv.ParseUint(ctx.DefaultQuery("start", ctx.DefaultPostForm("start", "0")), 10, 32)
 	if err == nil {
-		start = uint(is)
+		start = uint64(is)
 	} else {
 		start = 0
 	}
-	il, err := strconv.ParseUint(ctx.DefaultQuery("limit", ctx.DefaultPostForm("limit", strconv.Itoa(DefaultLimit))), 10, 32)
+	il, err := strconv.ParseUint(ctx.DefaultQuery("limit", ctx.DefaultPostForm("limit", strconv.FormatUint(DefaultLimit, 10))), 10, 32)
 	if err == nil {
-		limit = uint(il)
+		limit = uint64(il)
 	} else {
 		limit = DefaultLimit
 	}
