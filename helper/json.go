@@ -2,17 +2,14 @@ package helper
 
 import "encoding/json"
 
-func Json2String(d interface{}) string {
+func Json2String(d interface{}) (string, error) {
 	j, err := json.Marshal(d)
 	if err != nil {
-		panic(err)
+		return "", err
 	}
-	return string(j)
+	return string(j), nil
 }
 
-func String2Json(j string, v interface{}) {
-	err := json.Unmarshal([]byte(j), v)
-	if err != nil {
-		panic(err)
-	}
+func String2Json(j string, v interface{}) error {
+	return json.Unmarshal([]byte(j), v)
 }
