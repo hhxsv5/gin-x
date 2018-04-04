@@ -59,4 +59,12 @@ func main() {
 	log.Println(t1.Year(), t1.Month(), t1.Day(), t1.Hour(), t1.Minute(), t1.Second(), t1.Nanosecond())
 	t2 := helper.TodayEnd()
 	log.Println(t2.Year(), t2.Month(), t2.Day(), t2.Hour(), t2.Minute(), t2.Second(), t2.Nanosecond())
+
+	// Shell
+	str, err := helper.ExecShell("php -r 'echo time();'")
+	if err != nil {
+		log.Println(err)
+	} else {
+		log.Println("now time", str)
+	}
 }
