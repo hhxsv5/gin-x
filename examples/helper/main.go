@@ -22,13 +22,21 @@ func main() {
 
 	// Json2String
 	s := T{"a", 123}
-	ss := helper.Json2String(s)
-	log.Println(ss)
+	ss, err := helper.Json2String(s)
+	if err != nil {
+		log.Println(err)
+	} else {
+		log.Println(ss)
+	}
 
 	// String2Json
 	sss := new(T)
-	helper.String2Json(ss, sss)
-	log.Println(sss)
+	err = helper.String2Json(ss, sss)
+	if err != nil {
+		log.Println(err)
+	} else {
+		log.Println(sss)
+	}
 
 	// Check file exist
 	e := helper.FileExists("./main.go")
