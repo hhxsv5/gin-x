@@ -30,8 +30,8 @@ func main() {
 	}
 
 	// String2Json
-	sss := new(T)
-	err = helper.String2Json(ss, sss)
+	sss := T{}
+	err = helper.String2Json(ss, &sss)
 	if err != nil {
 		log.Println(err)
 	} else {
