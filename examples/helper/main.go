@@ -53,4 +53,10 @@ func main() {
 	//total := 10
 	//pager := helper.BuildPager(list, total)
 	//ctx.JSON(http.StatusOK, pager)
+
+	// Time
+	t1 := helper.TodayStart()
+	log.Println(t1.Year(), t1.Month(), t1.Day(), t1.Hour(), t1.Minute(), t1.Second(), t1.Nanosecond())
+	t2 := helper.TodayEnd()
+	log.Println(t2.Year(), t2.Month(), t2.Day(), t2.Hour(), t2.Minute(), t2.Second(), t2.Nanosecond())
 }
