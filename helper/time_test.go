@@ -2,6 +2,10 @@ package helper
 
 import "testing"
 
+func TestMonthStart(t *testing.T) {
+	t.Log(MonthStart())
+}
+
 func TestTodayStart(t *testing.T) {
 	t.Log(TodayStart())
 }

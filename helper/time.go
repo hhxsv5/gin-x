@@ -7,6 +7,11 @@ var (
 	TimeLayoutDateTime = "2006-01-02 15:04:05"
 )
 
+func MonthStart() time.Time {
+	y, m, _ := time.Now().Date()
+	return time.Date(y, m, 1, 0, 0, 0, 0, time.Local)
+}
+
 func TodayStart() time.Time {
 	y, m, d := time.Now().Date()
 	return time.Date(y, m, d, 0, 0, 0, 0, time.Local)
