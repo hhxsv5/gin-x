@@ -3,11 +3,12 @@ package router
 import (
 	"reflect"
 	"strings"
+
 	"github.com/gin-gonic/gin"
 )
 
 const (
-	PathTag = "path"
+	RequestTag = "request"
 
 	MethodGet     = "GET"
 	MethodPost    = "POST"
@@ -35,27 +36,24 @@ var (
 		if field.Type != actionType {
 			return false
 		}
-		path := strings.Trim(field.Tag.Get(PathTag), " ")
-		if path == "-" {
+		request := strings.Trim(field.Tag.Get(RequestTag), " ")
+		if request == "-" {
 			return false
-		} else if path == "/" {
-			path = ""
+		} else if request == "/" {
+			request = ""
 		}
-		return guessMethod(rg, field.Name, path, value.Interface().(func(*gin.Context)))
+		s := strings.SplitN(request, " ", 2)
+		if len(s) != 2 {
+			return false
+		}
+
+		return guessMethod(rg, s[0], s[1], value.Interface().(func(*gin.Context)))
 	}
-	guessMethod = func(rg gin.IRouter, name string, path string, handler func(*gin.Context)) bool {
-		for method, call := range supportMethods {
-			ml := len(method)
-			if ml <= len(name) {
-				m := strings.ToUpper(name[:ml])
-				if method != m {
-					continue
-				}
-				if _, ok := supportMethods[m]; ok {
-					call(rg, path, handler)
-					return true
-				}
-			}
+	guessMethod = func(rg gin.IRouter, method string, path string, handler func(*gin.Context)) bool {
+		method = strings.ToUpper(method)
+		if call, ok := supportMethods[method]; ok {
+			call(rg, path, handler)
+			return true
 		}
 		return false
 	}

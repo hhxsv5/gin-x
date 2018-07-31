@@ -2,8 +2,8 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/hhxsv5/gin-x/router"
 	"github.com/hhxsv5/gin-x/examples/router/controllers"
+	"github.com/hhxsv5/gin-x/router"
 )
 
 func main() {
@@ -13,6 +13,7 @@ func main() {
 
 	// Register route: POST http://127.0.0.1:5200/xxx
 	// Register route: GET http://127.0.0.1:5200/yyy
+	// Register route: ANY http://127.0.0.1:5200/any
 	r.RegisterController(controllers.Test{}.NewController())
 
 	// Register route: POST http://127.0.0.1:5200/user/create

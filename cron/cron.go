@@ -18,7 +18,7 @@ func NewManager() *Manager {
 	return &Manager{c}
 }
 
-func (m *Manager) Register(job ... Job) {
+func (m *Manager) Register(job ...Job) {
 	for _, j := range job {
 		m.cron.AddJob(j.Frequency(), j)
 	}
