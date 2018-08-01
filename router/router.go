@@ -39,14 +39,17 @@ var (
 		request := strings.Trim(field.Tag.Get(RequestTag), " ")
 		if request == "-" {
 			return false
-		} else if request == "/" {
-			request = ""
 		}
 		s := strings.SplitN(request, " ", 2)
-		if len(s) != 2 {
-			return false
+		method := strings.Trim(s[0], " ")
+		path := ""
+		if len(s) >= 2 {
+			path = strings.Trim(s[1], " ")
+			if path == "/" {
+				path = ""
+			}
 		}
-		return guessMethod(rg, strings.Trim(s[0], " "), strings.Trim(s[1], " "), value.Interface().(func(*gin.Context)))
+		return guessMethod(rg, method, path, value.Interface().(func(*gin.Context)))
 	}
 	guessMethod = func(rg gin.IRouter, method string, path string, handler func(*gin.Context)) bool {
 		method = strings.ToUpper(method)
