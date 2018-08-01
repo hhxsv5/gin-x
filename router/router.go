@@ -46,8 +46,7 @@ var (
 		if len(s) != 2 {
 			return false
 		}
-
-		return guessMethod(rg, s[0], s[1], value.Interface().(func(*gin.Context)))
+		return guessMethod(rg, strings.Trim(s[0], " "), strings.Trim(s[1], " "), value.Interface().(func(*gin.Context)))
 	}
 	guessMethod = func(rg gin.IRouter, method string, path string, handler func(*gin.Context)) bool {
 		method = strings.ToUpper(method)
