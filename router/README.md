@@ -60,6 +60,13 @@ func main() {
 	// Register route: POST http://127.0.0.1:5200/user/create
 	// Register route: GET http://127.0.0.1:5200/user/list
 	r.RegisterGroup("user" /*, middlewares.Auth()*/).RegisterController(controllers.User{}.NewController())
+
+	// Nested route
+    xxx := r.RegisterGroup("api").RegisterGroup("xxx")
+    {
+        xxx.RegisterController(controllers.Yyy{}.NewController())
+        xxx.RegisterController(controllers.Zzz{}.NewController())
+    }
 	ng.Run(":5200")
 }
 ```
