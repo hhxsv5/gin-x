@@ -73,4 +73,4 @@ func main() {
 
 ## License
 
-[MIT](https://github.com/hhxsv5/gin-slim-router/blob/master/LICENSE)
+[MIT](https://github.com/hhxsv5/gin-x/blob/master/LICENSE)
