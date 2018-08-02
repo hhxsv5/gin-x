@@ -11,13 +11,13 @@ func main() {
 	r := router.NewSlimRouter(ng)
 	//r.Use(middlewares.Global()) // Global middleware
 
-	// Register route: POST http://127.0.0.1:5200/xxx
-	// Register route: GET http://127.0.0.1:5200/yyy
-	// Register route: ANY http://127.0.0.1:5200/any
+	// Register routes: POST http://127.0.0.1:5200/xxx
+	// Register routes: GET http://127.0.0.1:5200/yyy
+	// Register routes: ANY http://127.0.0.1:5200/any
 	r.RegisterController(controllers.Test{}.NewController())
 
-	// Register route: POST http://127.0.0.1:5200/user/create
-	// Register route: GET http://127.0.0.1:5200/user/list
-	r.RegisterGroup("user" /*, middlewares.Auth()*/).RegisterController(controllers.User{}.NewController())
+	// Register routes: POST http://127.0.0.1:5200/user/create
+	// Register routes: GET http://127.0.0.1:5200/user/list
+	r.RegisterGroup("api").RegisterGroup("user" /*, middlewares.Auth()*/).RegisterController(controllers.User{}.NewController())
 	ng.Run(":5200")
 }

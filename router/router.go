@@ -80,7 +80,7 @@ func (sr *SlimRouter) Use(middleware ...gin.HandlerFunc) {
 func (sr *SlimRouter) RegisterGroup(group string, middleware ...gin.HandlerFunc) *routerGroup {
 	rg := sr.engine.Group(group)
 	rg.Use(middleware...)
-	return &routerGroup{rg}
+	return &routerGroup{rg: rg}
 }
 
 func (sr *SlimRouter) RegisterController(ctrl ...Controller) {
@@ -95,7 +95,7 @@ func (sr *SlimRouter) RegisterController(ctrl ...Controller) {
 }
 
 type routerGroup struct {
-	grg *gin.RouterGroup
+	rg *gin.RouterGroup
 }
 
 func (g *routerGroup) RegisterController(ctrl ...Controller) {
@@ -104,7 +104,13 @@ func (g *routerGroup) RegisterController(ctrl ...Controller) {
 		v := reflect.ValueOf(tc)
 		fc := t.NumField()
 		for i := 0; i < fc; i++ {
-			parseAction(g.grg, t.Field(i), v.Field(i))
+			parseAction(g.rg, t.Field(i), v.Field(i))
 		}
 	}
+}
+
+func (g *routerGroup) RegisterGroup(group string, middleware ...gin.HandlerFunc) *routerGroup {
+	rg := g.rg.Group(group)
+	rg.Use(middleware...)
+	return &routerGroup{rg}
 }
