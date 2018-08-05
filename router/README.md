@@ -43,8 +43,8 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/hhxsv5/gin-x/examples/router/controllers"
 	"github.com/hhxsv5/gin-x/router"
+	"github.com/hhxsv5/gin-x/examples/router/controllers"
 )
 
 func main() {
@@ -62,11 +62,11 @@ func main() {
 	r.RegisterGroup("user" /*, middlewares.Auth()*/).RegisterController(controllers.User{}.NewController())
 
 	// Nested route
-    xxx := r.RegisterGroup("api").RegisterGroup("xxx")
-    {
-        xxx.RegisterController(controllers.Yyy{}.NewController())
-        xxx.RegisterController(controllers.Zzz{}.NewController())
-    }
+	xxx := r.RegisterGroup("api").RegisterGroup("xxx")
+	{
+		xxx.RegisterController(controllers.Yyy{}.NewController())
+		xxx.RegisterController(controllers.Zzz{}.NewController())
+	}
 	ng.Run(":5200")
 }
 ```
