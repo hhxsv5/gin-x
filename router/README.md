@@ -23,8 +23,7 @@ type User struct {
 }
 
 func (u User) NewController() router.Controller {
-	u.Create = create
-	u.List = getList
+	u.Create, u.List = create, list
 	return u
 }
 
@@ -32,7 +31,7 @@ func create(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, "create user")
 }
 
-func getList(ctx *gin.Context) {
+func list(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, "get user list")
 }
 ```

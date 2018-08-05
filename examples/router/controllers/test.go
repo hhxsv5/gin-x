@@ -16,9 +16,7 @@ type Test struct {
 }
 
 func (t Test) NewController() router.Controller {
-	t.Xxx = xxx
-	t.Yyy = yyy
-	t.Any = any
+	t.Xxx, t.Yyy, t.Any = xxx, yyy, any
 	return t
 }
 
