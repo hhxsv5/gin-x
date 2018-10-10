@@ -28,5 +28,10 @@
 
 - Response
 
+## Skeleton
+
+[Skeleton](https://github.com/hhxsv5/gin-x-skeleton)
+
+## License
 
 [MIT](https://github.com/hhxsv5/gin-x/blob/master/LICENSE)
