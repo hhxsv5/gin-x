@@ -1,10 +1,10 @@
-gin-slim-cron
-=============
-A smart cron for gin framework
+# Simple cron
+> A cron manger instead of Linux cron.
 
 ## Usage
 
-1. Create Job
+1.Create Job
+
 ```Go
 package jobs
 
@@ -17,7 +17,7 @@ type Test struct {
 }
 
 func (Test) Frequency() string {
-	return "30 * * * * *" //每30秒
+	return "30 * * * * *" // Every 30 seconds
 }
 
 func (Test) Run() {
@@ -25,15 +25,16 @@ func (Test) Run() {
 }
 ```
 
-2. Create Job Manager & Register Job
+2.Create Job Manager & Register Job
+
 ```Go
 package crons
 
 import (
-	"log"
-	"github.com/hhxsv5/gin-x/cron"
-	"github.com/hhxsv5/gin-x/examples/cron/cron/jobs"
 	"time"
+	"log"
+	"jobs"
+	"github.com/hhxsv5/gin-x/framework/cron"
 )
 
 var (
@@ -54,11 +55,8 @@ func init() {
 }
 ```
 
-3. Import package `crons`
+3.Import package `crons`
+
 ```Go
 import _ "xxx/crons"
 ```
-
-## License
-
-[MIT](https://github.com/hhxsv5/gin-x/blob/master/LICENSE)

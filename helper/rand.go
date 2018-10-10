@@ -1,8 +1,8 @@
 package helper
 
 import (
-	"time"
 	"math/rand"
+	"time"
 )
 
 var (

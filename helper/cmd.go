@@ -1,8 +1,8 @@
 package helper
 
 import (
-	"os/exec"
 	"bytes"
+	"os/exec"
 )
 
 func ExecShell(s string) (string, error) {

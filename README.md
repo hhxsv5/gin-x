@@ -1,19 +1,25 @@
-# Gin-X
-More components to improve development efficiency for Gin framework.
+# Golang WEB 框架 - 基于 Gin
 
-## Features
+## 组件列表
 
-- Slim router
+- 路由
 
-- Smart cron
+- 定时任务
 
-- Utility helper
+- 配置
 
-- TODO...
+- 数据库
 
-## Document
-> Refer README.md in every folder.
+- 枚举
 
-## License
+- 日志
 
-[MIT](https://github.com/hhxsv5/gin-x/blob/master/LICENSE)
+- 中间件
+
+- 数据模型
+
+- 分页
+
+- Redis
+
+- 响应

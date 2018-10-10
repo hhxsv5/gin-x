@@ -4,7 +4,8 @@ A slim router for gin framework
 
 ## Usage
 
-1. Create controller
+1.Create controller
+
 ```Go
 package controllers
 
@@ -12,7 +13,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/hhxsv5/gin-x/router"
+	"http://github.com/hhxsv5/gin-x/framework/router"
 )
 
 type User struct {
@@ -23,7 +24,8 @@ type User struct {
 }
 
 func (u User) NewController() router.Controller {
-	u.Create, u.List = create, list
+	u.Create = create
+	u.List = getList
 	return u
 }
 
@@ -31,19 +33,19 @@ func create(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, "create user")
 }
 
-func list(ctx *gin.Context) {
+func getList(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, "get user list")
 }
 ```
 
-2. Register route
+2.Register route
 ```Go
 package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/hhxsv5/gin-x/router"
-	"github.com/hhxsv5/gin-x/examples/router/controllers"
+	"http://github.com/hhxsv5/gin-x/examples/router/controllers"
+	"http://github.com/hhxsv5/gin-x/framework/router"
 )
 
 func main() {
@@ -58,18 +60,14 @@ func main() {
 
 	// Register route: POST http://127.0.0.1:5200/user/create
 	// Register route: GET http://127.0.0.1:5200/user/list
-	r.RegisterGroup("user" /*, middlewares.Auth()*/).RegisterController(controllers.User{}.NewController())
+	r.RegisterGroup("api").RegisterGroup("user" /*, middlewares.Auth()*/).RegisterController(controllers.User{}.NewController())
 
-	// Nested route
+    // Nested route
 	xxx := r.RegisterGroup("api").RegisterGroup("xxx")
 	{
-		xxx.RegisterController(controllers.Yyy{}.NewController())
-		xxx.RegisterController(controllers.Zzz{}.NewController())
+	    xxx.RegisterController(controllers.Yyy{}.NewController())
+	    xxx.RegisterController(controllers.Zzz{}.NewController())
 	}
 	ng.Run(":5200")
 }
 ```
-
-## License
-
-[MIT](https://github.com/hhxsv5/gin-x/blob/master/LICENSE)

@@ -1,6 +1,6 @@
 gin-slim-helper
 ===============
-Utility helper for gin framework
+Utility helper for Gin framework
 
 ## Usage
 
@@ -35,16 +35,3 @@ log.Println(e)
 // Check is dir
 id := helper.FileIsDir("./main.go")
 log.Println(id)
-
-// Pager usage
-//ctx: *gin.Context
-//start, limit := helper.ParsePager(ctx)
-//list := make([]string, 10)
-//total := 10
-//pager := helper.BuildPager(list, total)
-//ctx.JSON(http.StatusOK, pager)
-```
-
-## License
-
-[MIT](https://github.com/hhxsv5/gin-x/blob/master/LICENSE)
