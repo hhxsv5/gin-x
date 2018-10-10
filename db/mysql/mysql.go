@@ -7,9 +7,9 @@ import (
 
 	"github.com/gin-gonic/gin"
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/hhxsv5/gin-x/config"
 	"github.com/jinzhu/gorm"
 	"github.com/spf13/viper"
-	"gitlab.kucoin.net/golang/framework/config"
 )
 
 var (

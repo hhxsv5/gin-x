@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"gitlab.kucoin.net/golang/framework/enums/codes"
+	"github.com/hhxsv5/gin-x/enums/codes"
 )
 
 type Response struct {

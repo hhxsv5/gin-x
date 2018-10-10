@@ -11,9 +11,9 @@ import (
 	"strings"
 
 	"github.com/gin-gonic/gin"
-	"gitlab.kucoin.net/golang/framework/enums/codes"
-	"gitlab.kucoin.net/golang/framework/log"
-	"gitlab.kucoin.net/golang/framework/response"
+	"github.com/hhxsv5/gin-x/enums/codes"
+	"github.com/hhxsv5/gin-x/log"
+	"github.com/hhxsv5/gin-x/response"
 )
 
 func Recovery() gin.HandlerFunc {
