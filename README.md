@@ -1,25 +1,32 @@
-# Golang WEB 框架 - 基于 Gin
+# Gin-X
+> Golang WEB framework base on [Gin](https://github.com/gin-gonic/gin), more components to improve development efficiency.
 
-## 组件列表
 
-- 路由
+## Components
 
-- 定时任务
+- Slim router
 
-- 配置
+- Cron
 
-- 数据库
+- Config
 
-- 枚举
+- Database
 
-- 日志
+- Enum
 
-- 中间件
+- Helper
 
-- 数据模型
+- Log
 
-- 分页
+- Middleware
+
+- ORM Model
+
+- Pager
 
 - Redis
 
-- 响应
+- Response
+
+
+[MIT](https://github.com/hhxsv5/gin-x/blob/master/LICENSE)
