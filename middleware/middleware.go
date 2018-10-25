@@ -48,7 +48,7 @@ func Cors() gin.HandlerFunc {
 			u, err := url.Parse(origin)
 			if err == nil {
 				h := u.Hostname()
-				if h == "127.0.0.1" || h == "localhost" || (strings.HasSuffix(h, "kcs.top") || strings.HasSuffix(h, "kucoin.net") || strings.HasSuffix(h, "kucoin.ninja")) {
+				if h == "127.0.0.1" || h == "localhost" || strings.HasSuffix(h, "test.com") {
 					if u.Port() == "" {
 						origin = fmt.Sprintf("%s://%s", u.Scheme, h)
 					} else {
