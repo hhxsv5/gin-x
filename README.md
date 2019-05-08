@@ -1,6 +1,7 @@
 # Gin-X
 > Golang WEB framework base on [Gin](https://github.com/gin-gonic/gin), more components to improve development efficiency.
 
+[![Sourcegraph](https://sourcegraph.com/github.com/hhxsv5/gin-x/-/badge.svg)](https://sourcegraph.com/github.com/hhxsv5/gin-x?badge)
 
 ## Components
 
