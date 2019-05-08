@@ -18,14 +18,14 @@ func NewManager() *Manager {
 	return &Manager{c}
 }
 
-func (m *Manager) Register(job ... Job) {
+func (m *Manager) Register(job ...Job) {
 	for _, j := range job {
-		m.cron.AddJob(j.Frequency(), j)
+		_ = m.cron.AddJob(j.Frequency(), j)
 	}
 }
 
 func (m *Manager) RegisterFunc(frequency string, cmd func()) {
-	m.cron.AddFunc(frequency, cmd)
+	_ = m.cron.AddFunc(frequency, cmd)
 }
 
 func (m *Manager) Start() {

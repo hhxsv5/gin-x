@@ -63,7 +63,7 @@ func (d *DailyLogWriter) Write(p []byte) (int, error) {
 
 func (d *DailyLogWriter) init() error {
 	if d.file != nil {
-		d.file.Close()
+		_ = d.file.Close()
 	}
 	if len(d.path) == 0 {
 		return errors.New("invalid log path")

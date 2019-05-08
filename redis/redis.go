@@ -250,7 +250,7 @@ func (c Client) Pipelining(cmds []PipeLiningCmd) []PipeLiningResult {
 			}
 		}
 	}
-	c.conn.Flush()
+	_ = c.conn.Flush()
 
 	vals := make([]PipeLiningResult, len(cmds))
 	for id, _ := range cmds {
